@@ -1,0 +1,30 @@
+#app {
+  height: 100%;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+
+.mySwiper {
+ 
+  padding: 20px 10px 40px;
+  background-color: #F4F7FD;
+  display: none;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+
+  .mySwiper {
+    display: block !important;
+  }
+
+}

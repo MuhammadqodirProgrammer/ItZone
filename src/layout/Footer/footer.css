@@ -1,0 +1,30 @@
+.footer {
+    color: #fff;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.media_link {
+    /* background-color: #252730;
+    background: #fff;
+    color: #fff; */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.media_link:hover svg {
+    /* fill: blue; */
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+@media screen and (max-width:768px) {}
