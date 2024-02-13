@@ -4,33 +4,33 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&family=Sixtyfour&display=swap');
 
-.roboto2{
+.roboto2 {
   font-family: 'Roboto Flex' !important;
   font-family: 'Roboto' !important;
 }
 
-  @keyframes gradientChange {
-      0% {
-          background-position: 0%
-      }
-
-      50% {
-          background-position: 100%
-      }
-
-      100% {
-          background-position: 0%
-      }
+@keyframes gradientChange {
+  0% {
+    background-position: 0%
   }
 
-  .gradient {
-      background: linear-gradient(90deg, blue, #EDAF4C);
-      background-size: 200% 200%;
+  50% {
+    background-position: 100%
   }
 
-  .element-to-rotate {
-      animation: gradientChange 4s ease infinite;
+  100% {
+    background-position: 0%
   }
+}
+
+.gradient {
+  background: linear-gradient(90deg, blue, #EDAF4C);
+  background-size: 200% 200%;
+}
+
+.element-to-rotate {
+  animation: gradientChange 4s ease infinite;
+}
 
 
 .inner_width {
@@ -42,14 +42,16 @@
     transform: rotate(360deg);
   }
 }
+
 .inner_container {
   max-width: 1220px !important;
   padding: 0 15px !important;
   margin: 0 auto !important;
   width: 100%;
- 
+
 
 }
+
 .animate-spin {
   animation: spin 5s linear infinite !important;
 }
@@ -95,13 +97,25 @@
 
   }
 }
-body{
+
+body {
   background-color: #F4F7FD;
 }
-.faq_form input::placeholder ,input{
+
+.faq_form input::placeholder, input {
   font-size: 24px;
 }
 
-.course_card:hover .course_icon{
-transform: rotate(90deg);
+.course_card {
+  transition: all 0.5s ;
+
+}
+.course_icon {
+  transition: all 0.4s ;
+  transform: rotate(0deg);
+
+}
+
+.course_card:hover .course_icon {
+  transform: rotate(45deg);
 }

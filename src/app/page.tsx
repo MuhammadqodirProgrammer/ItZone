@@ -19,6 +19,7 @@ import ruImg from '../../public/images/ru.svg';
 import turkImg from '../../public/images/tr.svg';
 import krImg from '../../public/images/kr.svg';
 import { BsArrowUpRight } from 'react-icons/bs';
+import { MdArrowOutward } from 'react-icons/md';
 import Image from '../../node_modules/next/image';
 
 import { ChooseCarousel } from '@/components/ChooseCarousel/ChooseCarousel';
@@ -162,6 +163,43 @@ export default function Home() {
 				</div>
 			</section>
 
+			<section className='course my-8 '>
+				<h5 className=' text-[30px] font-black  lg:tracking-wider tracking-wide block text-center mx-auto     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400  text-transparent bg-clip-text mb-4 '>
+					Ta'lim turlari
+				</h5>
+
+				<div className=' flex  justify-between'>
+					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3]  w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
+
+						<Image src={devImg} className=' mx-auto ' alt='course img' />
+
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
+						</div>
+					</div>
+
+					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3]  w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
+
+						<Image src={devImg} className=' mx-auto ' alt='course img' />
+
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
+						</div>
+					</div>
+					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3]  w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
+
+						<Image src={devImg} className=' mx-auto ' alt='course img' />
+
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
 					<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
@@ -202,39 +240,7 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-
-			<div className='cours'>
-				<h5 className=' text-[30px] font-black  lg:tracking-wider tracking-wide text-center    bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text '>
-					Ta'lim turlari
-				</h5>
-
-				<div className='p-5 course_card  transition-all is bg-[#F3F8FF] bg-red-500 w-[31%] pb-8 relative rounded-[20px]'>
-					<h5 className='font-bold text-[25px] '>Dasturlash</h5>
-
-					<Image src={devImg} className=' mx-auto ' alt='course img' />
-
-					<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-						<BsArrowUpRight size={30} className=' course_icon ' />
-					</div>
-				</div>
-			</div>
-
-			<section>
-				<div className='course_card bg-[#FAF9F3]'>
-					<Image src={engImg} className='  ' alt='lang  img' />
-
-					<p className=''>Ingliz tili</p>
-					<h5 className='  '>Ingliz tili</h5>
-
-					<Image
-						src={teacherImg}
-						className='w-10 h-10 rounded-full object-contain '
-						alt='teacher icon'
-					/>
-					<h5 className='  '>Jon Doe </h5>
-					<p className=''>O'qituvchi </p>
-				</div>
-			</section>
+		
 		</main>
 	);
 }
