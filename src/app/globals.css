@@ -83,6 +83,27 @@
   background-color: #2D3748;
 }
 
+
+
+body {
+  background-color: #F4F7FD;
+}
+
+.faq_form input::placeholder, input {
+  font-size: 20px;
+}
+
+.course_card {
+  transition: all 0.5s ;
+
+}
+.course_icon {
+  transition: all 0.4s ;
+  transform: rotate(0deg);
+
+}
+
+
 @media screen and (max-width:768px) {
   .inner_width {
     width: 100% !important;
@@ -96,26 +117,42 @@
     display: block;
 
   }
-}
-
-body {
-  background-color: #F4F7FD;
-}
-
-.faq_form input::placeholder, input {
-  font-size: 24px;
-}
-
-.course_card {
-  transition: all 0.5s ;
-
-}
-.course_icon {
-  transition: all 0.4s ;
-  transform: rotate(0deg);
-
+  .faq_form input::placeholder, input {
+    font-size: 18px;
+  }
 }
 
 .course_card:hover .course_icon {
   transform: rotate(45deg);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Assistant&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=REM&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(blue , rgb(255, 81, 0)) ;
+  transition: all 0.9s ease;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(rgb(255, 81, 0) ,blue ) ;
+
 }

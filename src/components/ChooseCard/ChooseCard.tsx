@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChooseCard = ({icon:string ,title:string, desc:string}) => {
+const ChooseCard:React.FC<chooseData> = ({icon ,title, desc}) => {
   return (
     <div>
       

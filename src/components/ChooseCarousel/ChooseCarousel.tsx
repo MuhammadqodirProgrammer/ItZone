@@ -56,7 +56,7 @@ export const ChooseCarousel = () => {
 			>
 				<div>
 					{chooseData.map((item) => (
-						<SwiperSlide>
+						<SwiperSlide key={item.id} >
 							<div
 								key={item.id}
 								className='  max-[390px]:w-[100%] max-w-[450px]  text-center min-h-[280px] sm:py-6 py-4 px-4 sm:px-8 shadow-[1px_1px_7px_4px_rgba(0,0,0,0.1),_1px_1px_7px_4px_rgba(45,78,255,0.15)] rounded-xl  '
