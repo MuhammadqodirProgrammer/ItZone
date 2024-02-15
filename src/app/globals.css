@@ -158,3 +158,12 @@ body {
   background-color: #F4F7FD;
   overflow-x: hidden;
 }
+.dark body{
+  background-color: #070F2B;
+  
+
+}
+
+.hello:hover{
+  transform: translateY(-10px);
+}

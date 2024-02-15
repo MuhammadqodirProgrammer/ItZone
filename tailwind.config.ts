@@ -13,6 +13,7 @@ module.exports = {
           mainColor: "#0d7de7",
           logoColor: "#EDAF4C",
           sideBar: "#6C66CD",
+          darkMain:"#111827",
           bgColor: "#1A202C",
           cardColor: "#2D3748",
           topColor: "#171923",

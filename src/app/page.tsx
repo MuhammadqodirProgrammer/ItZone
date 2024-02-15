@@ -65,6 +65,7 @@ export default function Home() {
 						"So'rovingiz qabul qilindi, siz bilan tez orada bog'lanamiz"
 					);
 					setIsSending((prev) => !prev);
+					setRequestModal(false)
 				}
 			}
 		};
@@ -95,7 +96,7 @@ export default function Home() {
 						</p>
 
 						<button
-							className='bg-gradient-to-r from-blue-500 to-orange-500 text-white px-4 py-2 text-xl rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate'
+							className='bg-gradient-to-r from-blue-500 to-orange-500 text-white px-4 py-2 text-xl rounded font-medium focus:ring ring-black cursor-pointer ring-opacity-10 gradient element-to-rotate'
 							onClick={() => setRequestModal(true)}
 						>
 							Ro'yxatdan o'tish
@@ -143,7 +144,7 @@ export default function Home() {
 									<p className='md:text-[12px]  text-[11px] '>bugun 13:00 da</p>
 								</div>
 							</div>
-							<button className='bg-gradient-to-r from-mainColor to-logoColor text-white px-4 py-2 text-[10px] rounded-full font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate block mt-2 mx-auto '>
+							<button className='bg-gradient-to-r from-mainColor to-logoColor text-white px-4 py-2 text-[10px] rounded-full font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate block mt-2 mx-auto cursor-pointer'>
 								guruhga qoshilish
 							</button>
 						</div>
@@ -166,20 +167,18 @@ export default function Home() {
 					Talabalarimizning har biri quyidagi afzalliklarga ega bo'ladi
 				</p>
 
-				<div className=' py-5  text-center hidden  md:flex justify-center  gap-y-10 gap-x-5 flex-wrap'>
+				<div className=' py-5  text-center hidden  md:flex justify-between  gap-y-10 gap-x-5 flex-wrap'>
 					{chooseData.map((item) => (
 						<div
 							key={item.id}
-							className=' w-[100%]  sm:w-[47%] md:w-[29%]  lg:w-[32%]   lg:py-6 lg:px-8 sm:py-5 sm:px-5  shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_1px_15px_25px_6px_rgba(45,78,255,0.15)] rounded-xl  '
+							className=' w-[100%]  sm:w-[47%] md:w-[29%]  lg:w-[31%]   lg:py-8 lg:px-8 sm:py-5 sm:px-5  shadow-[-1px_-1px_10px_4px_rgba(0,0,0,0.1),_1px_1px_8px_6px_rgba(45,78,255,0.15)] transition duration-300  hello cursor-pointer rounded-xl  text-center'
 						>
-							<div className='  bg-mainColor mx-auto  text-white w-[70px]  h-[70px] flex  items-center justify-center rounded-[20px] text-[28px]  '>
+							<div className='  bg-mainColor   text-white w-[70px]  h-[70px] flex  items-center justify-center rounded-[20px] text-[28px] mx-auto '>
 								{item.icon}
 							</div>
 
-							<h4 className=' text-[22px] text-black font-bold my-3  '>
-								{item.title}
-							</h4>
-							<p className=' max-w-[267px] text-gray-800  mx-auto '>
+							<h4 className=' text-[22px]  font-bold my-3  '>{item.title}</h4>
+							<p className=' max-w-[267px] dark:text-gray-400 text-gray-800  mx-auto '>
 								{item.desc}
 							</p>
 						</div>
@@ -235,7 +234,7 @@ export default function Home() {
 
 				<div className=' flex  justify-between flex-wrap gap-y-5 '>
 					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
 							<h5 className='font-bold text-[25px] '>Dasturlash</h5>
 
 							<Image src={devImg} className=' mx-auto ' alt='course img' />
@@ -246,7 +245,7 @@ export default function Home() {
 						</div>
 					</Zoom>
 					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
 							<h5 className='font-bold text-[25px] '>Marketing </h5>
 
 							<Image
@@ -261,7 +260,7 @@ export default function Home() {
 						</div>
 					</Zoom>
 					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
 							<h5 className='font-bold text-[25px] '>Dizayn</h5>
 
 							<Image src={designImg} className=' mx-auto ' alt='course img' />
@@ -276,13 +275,13 @@ export default function Home() {
 
 			<section id='#news' className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
-					<Zoom>
+					<Fade left>
 						<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
 							<Lottie animationData={callAnimationData} />
 						</div>
-					</Zoom>
+					</Fade>
 
-					<Zoom>
+					<Fade>
 						<div className='md:w-[47%] w-[100%] text-left  bg-gray-400 rounded-2xl px-5  py-7 '>
 							<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
 								Bepul konsultatsiya
@@ -325,7 +324,7 @@ export default function Home() {
 								/>
 
 								<button
-									className='shadow bg-orange-500 hover:bg-orange-400  w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4  py-3 px-4  rounded'
+									className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
 									type='submit'
 									disabled={isSending}
 								>
@@ -333,56 +332,60 @@ export default function Home() {
 								</button>
 							</form>
 						</div>
-					</Zoom>
+					</Fade>
 				</div>
 			</section>
 
 			{/* Modals */}
 
-			<Modal
-				width={'500px'}
-				title={'Create Videos'}
-				modal={requestModal}
-				setModal={setRequestModal}
-			>
-				<div className=' md:p-5 '>
-					<form
-						className='flex flex-col items-center gap-3 justify-center'
-						onSubmit={handleSubmit}
-					>
-						<div className='flex flex-col gap-2'>
-							<label htmlFor='name'>Name</label>
-							<input
-								className='w-full p-2 border rounded  border-gray-500 outline-none  focus:border-gray-700  bg-transparent'
-								placeholder='Ismingiz'
-								type='text'
-								onChange={(evt) =>
-									setUserData((prev) => ({
-										...prev,
-										userName: evt.target.value,
-									}))
-								}
-							/>
-						</div>
+				<Modal
+					width={'sm:w-[500px] w-[90%]'}
+					title={'Malumotlaringizni kiriting va biz sz bilan bog\'lanamiz'}
+					modal={requestModal}
+					setModal={setRequestModal}
+				>
+					<div className=' md:p-1  w-full'>
+						<form
+							className='flex flex-col  items-center gap-3 justify-center'
+							onSubmit={handleSubmit}
+						>
+							
+								<input
+									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+									
+									placeholder='Ismingiz'
+									type='text'
+									onChange={(evt) =>
+										setUserData((prev) => ({
+											...prev,
+											userName: evt.target.value,
+										}))
+									}
+								/>
 
-						<div className='flex gap-x-2'>
-							<button
-								className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-								type='submit'
-							>
-								Add
-							</button>
-							<button
-								className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
-								type='button'
-								onClick={() => setRequestModal(false)}
-							>
-								Cancel
-							</button>
-						</div>
-					</form>
-				</div>
-			</Modal>
+<input
+									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+									
+									placeholder='97 777 77 77'
+									type='number'
+									onChange={(evt) =>
+										setUserData((prev) => ({
+											...prev,
+											phone: evt.target.value,
+										}))
+									}
+								/>
+
+<button
+									className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
+									type='submit'
+									disabled={isSending}
+								>
+									{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
+								</button>
+						</form>
+					</div>
+				</Modal>
 
 			<Toaster position='top-center' />
 		</main>

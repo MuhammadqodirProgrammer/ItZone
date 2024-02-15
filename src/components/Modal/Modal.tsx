@@ -33,17 +33,17 @@ export const Modal: React.FC<ModalProps> = ({
       className={`overlay   ${modal ? "open" : ""}`}
     >
       <div
-        style={{ width: width }}
-        className={` modal_wrapperModal bg-white dark:bg-topColor `}
+        
+        className={` modal_wrapperModal bg-white dark:bg-topColor ${width} `}
       >
         <button
           onClick={() => setModal(false)}
-          className={`btn modal_button text-black dark:text-white  rounded-0`}
+          className={` modal_button  text-black dark:text-white `}
         >
           <AiOutlineClose size={20} />
         </button>
         <div className={` modal_header`}>
-          <h3 className="font-semibold text-[30px] text-black dark:text-white">
+          <h3 className="font-semibold text-lg sm:text-[22px] text-black dark:text-white">
             {title}
           </h3>
         </div>
