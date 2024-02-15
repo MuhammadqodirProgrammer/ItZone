@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  optimizeImages: true,
+  // optimizeImages: true,
   compress: true,
-  preload: true,
+  // preload: true,
   images: {
     domains: [
       "fakestoreapi.com",
