@@ -55,19 +55,19 @@ function Header() {
 						<div className='   hidden md:flex lg:items-center gap-x-[25px] '>
 							<div className='text-sm  md:flex items-center gap-x-[25px]'>
 								<a
-									href='#responsive-header'
+									href='#courses'
 									className='block  lg:inline-block  text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
 									Kurslar
 								</a>
 								<a
-									href='#responsive-header'
+									href='#news'
 									className='block  lg:inline-block  text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
 									Yangiliklar
 								</a>
 								<a
-									href='#responsive-header'
+									href='#about'
 									className='block  lg:inline-block  text-mainColor  hover:text-blue-900  font-medium text-[20px] '
 								>
 									Biz haqimizda

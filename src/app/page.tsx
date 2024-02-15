@@ -158,7 +158,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className='choose_section text-center'>
+			<section  className='choose_section text-center'>
 				<h2 className='  text-[30px] font-black  lg:tracking-wider tracking-wide text-center    bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text '>
 					Nima uchun aynan bizni tanlashingiz kerak?
 				</h2>
@@ -190,7 +190,7 @@ export default function Home() {
 				<ChooseCarousel />
 			</section>
 
-			<section className='about text-center py-10 '>
+			<section id='#about'  className='about text-center py-10 '>
 				<h2 className='  text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto  '>
 					Biz haqimizda
 				</h2>
@@ -221,7 +221,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className='course my-8 '>
+			<section id='#courses'  className='course my-8 '>
 				<h5 className=' text-[30px] font-black  lg:tracking-wider tracking-wide block text-center mx-auto     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400  text-transparent bg-clip-text mb-4 '>
 					Ta'lim turlari
 				</h5>
@@ -258,7 +258,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className='contact  '>
+			<section id='#news'  className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
 					<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
 						<Lottie animationData={callAnimationData} />
