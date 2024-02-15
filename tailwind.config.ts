@@ -1,7 +1,5 @@
-const withMT = require("@material-tailwind/react/utils/withMT");
 /** @type {import('tailwindcss').Config} */
-module.exports = withMT(
-  {
+module.exports = {
     important: true,
     content: ["./src/**/*.{js,ts,jsx,tsx,mdx}",],
     darkMode: "class",
@@ -67,6 +65,6 @@ module.exports = withMT(
         tilt: ["'Tilt Prism', cursive"],
       },
     },
-    plugins: [],
+    plugins: [require("tailwindcss-animated")],
   }
-)
+

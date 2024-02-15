@@ -85,9 +85,7 @@
 
 
 
-body {
-  background-color: #F4F7FD;
-}
+
 
 .faq_form input::placeholder, input {
   font-size: 20px;
@@ -155,4 +153,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-image: linear-gradient(rgb(255, 81, 0) ,blue ) ;
 
+}
+body {
+  background-color: #F4F7FD;
+  overflow-x: hidden;
 }

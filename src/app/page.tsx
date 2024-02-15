@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './globals.css';
-
+import { Fade, Zoom, Bounce } from 'react-reveal';
 import chooseData from '../data/data.js';
 import { FaCalendarDays } from 'react-icons/fa6';
 import { MdOutlineMail } from 'react-icons/md';
@@ -55,9 +55,9 @@ export default function Home() {
 			currentDate.toISOString();
 		const encodedMessage = encodeURIComponent(message); // Xabarni kodlangan URL-ga joylashtiramiz
 		const url = `https://api.telegram.org/bot${tg.token}/sendMessage?chat_id=${tg.chat_id}&text=${encodedMessage}`;
-	
+
 		const xht = new XMLHttpRequest();
-	
+
 		xht.onreadystatechange = function () {
 			if (xht.readyState == XMLHttpRequest.DONE) {
 				if (JSON.parse(xht.responseText).ok) {
@@ -72,13 +72,12 @@ export default function Home() {
 		xht.send();
 		// nameRef.current.value = '';
 	}
-	
+
 	const handleSubmit = (evt: any) => {
 		evt.preventDefault();
 		setIsSending((prev) => !prev);
 		sendMessage();
 	};
-	
 
 	return (
 		<main className='  '>
@@ -158,8 +157,8 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section  className='choose_section text-center'>
-				<h2 className='  text-[30px] font-black  lg:tracking-wider tracking-wide text-center    bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text '>
+			<section className='choose_section text-center  '>
+				<h2 className=' animate-rotate-y   text-[30px] font-black  lg:tracking-wider tracking-wide text-center    bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text '>
 					Nima uchun aynan bizni tanlashingiz kerak?
 				</h2>
 
@@ -190,125 +189,151 @@ export default function Home() {
 				<ChooseCarousel />
 			</section>
 
-			<section id='#about'  className='about text-center py-10 '>
+			<section id='#about' className='about text-center py-10 '>
 				<h2 className='  text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto  '>
 					Biz haqimizda
 				</h2>
 
 				<div className=' flex flex-wrap my-6 justify-between w-[100%] gap-6 '>
-					<div className=' md:w-[45%]  w-[100%] '>
-						<Lottie animationData={animatedData} />
-					</div>
-					<div className='md:w-[49%] w-[100%] text-left'>
-						<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
-							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-								IT Zone -
-							</span>
-							2023 yilda tashkil topgan o'quv markazi bo'lib, turk tili, ingliz
-							tili va rus tilini o'qitish orqali mijozlarimizga yuqori sifatli
-							ta'lim berishga bag'ishlangan.
-						</h4>
+					<Fade left>
+						<div className=' md:w-[45%]  w-[100%] '>
+							<Lottie animationData={animatedData} />
+						</div>
+					</Fade>
 
-						<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
-							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-								Bizning maqsadimiz -
-							</span>
-							texnologiya sohasidagi mahoratli kadrlarni o'rgatish va ularga
-							texnologiyalarning so'nggi rivojlanishlarini tajriba ettirish
-							orqali eng yaxshi tayyorlashdir.
-						</h4>
-					</div>
+					<Fade right>
+						<div className='md:w-[49%] w-[100%] text-left'>
+							<Fade right>
+								<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+									<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+										IT Zone -
+									</span>
+									2023 yilda tashkil topgan o'quv markazi bo'lib, turk tili,
+									ingliz tili va rus tilini o'qitish orqali mijozlarimizga
+									yuqori sifatli ta'lim berishga bag'ishlangan.
+								</h4>
+							</Fade>
+							<Fade right>
+								<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+									<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+										Bizning maqsadimiz -
+									</span>
+									texnologiya sohasidagi mahoratli kadrlarni o'rgatish va ularga
+									texnologiyalarning so'nggi rivojlanishlarini tajriba ettirish
+									orqali eng yaxshi tayyorlashdir.
+								</h4>
+							</Fade>
+						</div>
+					</Fade>
 				</div>
 			</section>
 
-			<section id='#courses'  className='course my-8 '>
+			<section id='#courses' className='course my-8 '>
 				<h5 className=' text-[30px] font-black  lg:tracking-wider tracking-wide block text-center mx-auto     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400  text-transparent bg-clip-text mb-4 '>
 					Ta'lim turlari
 				</h5>
 
 				<div className=' flex  justify-between flex-wrap gap-y-5 '>
-					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
+					<Zoom>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+							<h5 className='font-bold text-[25px] '>Dasturlash</h5>
 
-						<Image src={devImg} className=' mx-auto ' alt='course img' />
+							<Image src={devImg} className=' mx-auto ' alt='course img' />
 
-						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon ' />
+							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+								<MdArrowOutward size={30} className=' course_icon ' />
+							</div>
 						</div>
-					</div>
+					</Zoom>
+					<Zoom>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+							<h5 className='font-bold text-[25px] '>Marketing </h5>
 
-					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-						<h5 className='font-bold text-[25px] '>Marketing </h5>
+							<Image
+								src={markitingImg}
+								className=' mx-auto '
+								alt='course img'
+							/>
 
-						<Image src={markitingImg} className=' mx-auto ' alt='course img' />
-
-						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon ' />
+							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+								<MdArrowOutward size={30} className=' course_icon ' />
+							</div>
 						</div>
-					</div>
-					<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-						<h5 className='font-bold text-[25px] '>Dizayn</h5>
+					</Zoom>
+					<Zoom>
+						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+							<h5 className='font-bold text-[25px] '>Dizayn</h5>
 
-						<Image src={designImg} className=' mx-auto ' alt='course img' />
+							<Image src={designImg} className=' mx-auto ' alt='course img' />
 
-						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon ' />
+							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+								<MdArrowOutward size={30} className=' course_icon ' />
+							</div>
 						</div>
-					</div>
+					</Zoom>
 				</div>
 			</section>
 
-			<section id='#news'  className='contact  '>
+			<section id='#news' className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
-					<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
-						<Lottie animationData={callAnimationData} />
-					</div>
-					<div className='md:w-[47%] w-[100%] text-left  bg-gray-400 rounded-2xl px-5  py-7 '>
-						<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-							Bepul konsultatsiya
-						</h4>
-						<p className=' text-[16px] sm:text-[20px] '>
-							Telefon raqamingizni yozib qoldiring, biz sizga qoʻngʻiroq qilamiz
-							va birorta ham savolingiz javobsiz qolmasligiga harakat qilamiz
-						</p>
-						<form
-							onSubmit={handleSubmit}
-							className='w-full  flex flex-col gap-5 mt-5 faq_form '
-						>
-							<input
-								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-								type='text'
-								placeholder='Ismingiz'
-								required
-								maxLength={50}
-								onChange={(evt) =>
-									setUserData((prev) => ({
-										...prev,
-										userName: evt.target.value,
-									}))
-								}
-							/>
+					<Zoom>
+						<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
+							<Lottie animationData={callAnimationData} />
+						</div>
+					</Zoom>
 
-							<input
-								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-								type='number'
-								placeholder='97 777 77 77'
-								required
-								maxLength={13}
-								onChange={(evt) =>
-									setUserData((prev) => ({ ...prev, phone: evt.target.value }))
-								}
-							/>
-
-							<button
-								className='shadow bg-orange-500 hover:bg-orange-400  w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4  py-3 px-4  rounded'
-								type='submit'
-								disabled={isSending}
+					<Zoom>
+						<div className='md:w-[47%] w-[100%] text-left  bg-gray-400 rounded-2xl px-5  py-7 '>
+							<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+								Bepul konsultatsiya
+							</h4>
+							<p className=' text-[16px] sm:text-[20px] '>
+								Telefon raqamingizni yozib qoldiring, biz sizga qoʻngʻiroq
+								qilamiz va birorta ham savolingiz javobsiz qolmasligiga harakat
+								qilamiz
+							</p>
+							<form
+								onSubmit={handleSubmit}
+								className='w-full  flex flex-col gap-5 mt-5 faq_form '
 							>
-								{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
-							</button>
-						</form>
-					</div>
+								<input
+									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+									type='text'
+									placeholder='Ismingiz'
+									required
+									maxLength={50}
+									onChange={(evt) =>
+										setUserData((prev) => ({
+											...prev,
+											userName: evt.target.value,
+										}))
+									}
+								/>
+
+								<input
+									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+									type='number'
+									placeholder='97 777 77 77'
+									required
+									maxLength={13}
+									onChange={(evt) =>
+										setUserData((prev) => ({
+											...prev,
+											phone: evt.target.value,
+										}))
+									}
+								/>
+
+								<button
+									className='shadow bg-orange-500 hover:bg-orange-400  w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4  py-3 px-4  rounded'
+									type='submit'
+									disabled={isSending}
+								>
+									{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
+								</button>
+							</form>
+						</div>
+					</Zoom>
 				</div>
 			</section>
 
