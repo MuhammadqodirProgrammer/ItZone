@@ -156,7 +156,8 @@
 }
 body {
   background-color: #F4F7FD;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  
 }
 .dark body{
   background-color: #070F2B;

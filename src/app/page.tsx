@@ -176,9 +176,8 @@ export default function Home() {
 						<div
 							key={item.id}
 							data-aos="flip-left"
-        //  data-aos-duration="3000" 
-        //  data-aos-easing="linear" 
-        //  data-aos-delay="1000"
+        
+                          data-aos-delay="100"
 							className=' w-[100%]  sm:w-[47%] md:w-[29%]  lg:w-[31%]   lg:py-8 lg:px-8 sm:py-5 sm:px-5  shadow-[-1px_-1px_10px_4px_rgba(0,0,0,0.1),_1px_1px_8px_6px_rgba(45,78,255,0.15)] transition duration-300  hello cursor-pointer rounded-xl  text-center'
 						>
 							<div className='  bg-mainColor   text-white w-[70px]  h-[70px] flex  items-center justify-center rounded-[20px] text-[28px] mx-auto '>
