@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './globals.css';
-const Fade = require("react-reveal/Fade")
-const Zoom = require("react-reveal/Zoom")
-// import { Fade, Zoom, Bounce } from 'react-reveal';
 import chooseData from '../data/data.js';
 import { FaCalendarDays } from 'react-icons/fa6';
 import { MdOutlineMail } from 'react-icons/md';
@@ -26,7 +23,8 @@ import { MdArrowOutward } from 'react-icons/md';
 import Image from '../../node_modules/next/image';
 
 import { Toaster, toast } from 'react-hot-toast';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { ChooseCarousel } from '@/components/ChooseCarousel/ChooseCarousel';
 import { Modal } from '@/components/Modal/Modal';
 export default function Home() {
@@ -38,6 +36,10 @@ export default function Home() {
 		userName: '',
 		phone: '',
 	});
+	useEffect(() => {
+		AOS.init();
+		AOS.refresh();
+	}, []);
 	useEffect(() => {
 		console.log(isSending, 'isSending');
 	}, [isSending]);
@@ -67,7 +69,7 @@ export default function Home() {
 						"So'rovingiz qabul qilindi, siz bilan tez orada bog'lanamiz"
 					);
 					setIsSending((prev) => !prev);
-					setRequestModal(false)
+					setRequestModal(false);
 				}
 			}
 		};
@@ -173,6 +175,10 @@ export default function Home() {
 					{chooseData.map((item) => (
 						<div
 							key={item.id}
+							data-aos="flip-left"
+         data-aos-duration="3000" 
+         data-aos-easing="linear" 
+         data-aos-delay="1000"
 							className=' w-[100%]  sm:w-[47%] md:w-[29%]  lg:w-[31%]   lg:py-8 lg:px-8 sm:py-5 sm:px-5  shadow-[-1px_-1px_10px_4px_rgba(0,0,0,0.1),_1px_1px_8px_6px_rgba(45,78,255,0.15)] transition duration-300  hello cursor-pointer rounded-xl  text-center'
 						>
 							<div className='  bg-mainColor   text-white w-[70px]  h-[70px] flex  items-center justify-center rounded-[20px] text-[28px] mx-auto '>
@@ -194,38 +200,29 @@ export default function Home() {
 				<h2 className='  text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r sm:text-[40px]  lg:text-[60px] from-blue-600 via-logoColor to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto  '>
 					Biz haqimizda
 				</h2>
-
 				<div className=' flex flex-wrap my-6 justify-between w-[100%] gap-6 '>
-					<Fade left>
-						<div className=' md:w-[45%]  w-[100%] '>
-							<Lottie animationData={animatedData} />
-						</div>
-					</Fade>
+					<div data-aos='fade-right' className=' md:w-[45%]  w-[100%] '>
+						<Lottie animationData={animatedData} />
+					</div>
 
-					<Fade right>
-						<div className='md:w-[49%] w-[100%] text-left'>
-							<Fade right>
-								<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
-									<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-										IT Zone -
-									</span>
-									2023 yilda tashkil topgan o'quv markazi bo'lib, turk tili,
-									ingliz tili va rus tilini o'qitish orqali mijozlarimizga
-									yuqori sifatli ta'lim berishga bag'ishlangan.
-								</h4>
-							</Fade>
-							<Fade right>
-								<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
-									<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-										Bizning maqsadimiz -
-									</span>
-									texnologiya sohasidagi mahoratli kadrlarni o'rgatish va ularga
-									texnologiyalarning so'nggi rivojlanishlarini tajriba ettirish
-									orqali eng yaxshi tayyorlashdir.
-								</h4>
-							</Fade>
-						</div>
-					</Fade>
+					<div data-aos='fade-left' className='md:w-[49%] w-[100%] text-left'>
+						<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+								IT Zone -
+							</span>
+							2023 yilda tashkil topgan o'quv markazi bo'lib, turk tili, ingliz
+							tili va rus tilini o'qitish orqali mijozlarimizga yuqori sifatli
+							ta'lim berishga bag'ishlangan.
+						</h4>
+						<h4 className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+								Bizning maqsadimiz -
+							</span>
+							texnologiya sohasidagi mahoratli kadrlarni o'rgatish va ularga
+							texnologiyalarning so'nggi rivojlanishlarini tajriba ettirish
+							orqali eng yaxshi tayyorlashdir.
+						</h4>
+					</div>
 				</div>
 			</section>
 
@@ -235,159 +232,141 @@ export default function Home() {
 				</h5>
 
 				<div className=' flex  justify-between flex-wrap gap-y-5 '>
-					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-							<h5 className='font-bold text-[25px] '>Dasturlash</h5>
+					<div data-aos="zoom-in" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
 
-							<Image src={devImg} className=' mx-auto ' alt='course img' />
+						<Image src={devImg} className=' mx-auto ' alt='course img' />
 
-							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-								<MdArrowOutward size={30} className=' course_icon ' />
-							</div>
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
 						</div>
-					</Zoom>
-					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-							<h5 className='font-bold text-[25px] '>Marketing </h5>
+					</div>
+					<div data-aos="zoom-in" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Marketing </h5>
 
-							<Image
-								src={markitingImg}
-								className=' mx-auto '
-								alt='course img'
-							/>
+						<Image src={markitingImg} className=' mx-auto ' alt='course img' />
 
-							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-								<MdArrowOutward size={30} className=' course_icon ' />
-							</div>
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
 						</div>
-					</Zoom>
-					<Zoom>
-						<div className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
-							<h5 className='font-bold text-[25px] '>Dizayn</h5>
+					</div>
+					<div data-aos="zoom-in" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-newCourcesBg  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+						<h5 className='font-bold text-[25px] '>Dizayn</h5>
 
-							<Image src={designImg} className=' mx-auto ' alt='course img' />
+						<Image src={designImg} className=' mx-auto ' alt='course img' />
 
-							<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
-								<MdArrowOutward size={30} className=' course_icon ' />
-							</div>
+						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white absolute bottom-4 right-6 rounded-full  '>
+							<MdArrowOutward size={30} className=' course_icon ' />
 						</div>
-					</Zoom>
+					</div>
 				</div>
 			</section>
 
 			<section id='#news' className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
-					<Fade left>
-						<div className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
-							<Lottie animationData={callAnimationData} />
-						</div>
-					</Fade>
+					<div data-aos='fade-right' className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
+						<Lottie animationData={callAnimationData} />
+					</div>
 
-					<Fade>
-						<div className='md:w-[47%] w-[100%] text-left  bg-gray-400 rounded-2xl px-5  py-7 '>
-							<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
-								Bepul konsultatsiya
-							</h4>
-							<p className=' text-[16px] sm:text-[20px] '>
-								Telefon raqamingizni yozib qoldiring, biz sizga qoʻngʻiroq
-								qilamiz va birorta ham savolingiz javobsiz qolmasligiga harakat
-								qilamiz
-							</p>
-							<form
-								onSubmit={handleSubmit}
-								className='w-full  flex flex-col gap-5 mt-5 faq_form '
+					<div data-aos='fade-left' className='md:w-[47%] w-[100%] text-left  bg-gray-400 rounded-2xl px-5  py-7 '>
+						<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
+							Bepul konsultatsiya
+						</h4>
+						<p className=' text-[16px] sm:text-[20px] '>
+							Telefon raqamingizni yozib qoldiring, biz sizga qoʻngʻiroq qilamiz
+							va birorta ham savolingiz javobsiz qolmasligiga harakat qilamiz
+						</p>
+						<form
+							onSubmit={handleSubmit}
+							className='w-full  flex flex-col gap-5 mt-5 faq_form '
+						>
+							<input
+								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+								type='text'
+								placeholder='Ismingiz'
+								required
+								maxLength={50}
+								onChange={(evt) =>
+									setUserData((prev) => ({
+										...prev,
+										userName: evt.target.value,
+									}))
+								}
+							/>
+
+							<input
+								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+								type='number'
+								placeholder='97 777 77 77'
+								required
+								maxLength={13}
+								onChange={(evt) =>
+									setUserData((prev) => ({
+										...prev,
+										phone: evt.target.value,
+									}))
+								}
+							/>
+
+							<button
+								className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
+								type='submit'
+								disabled={isSending}
 							>
-								<input
-									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-									type='text'
-									placeholder='Ismingiz'
-									required
-									maxLength={50}
-									onChange={(evt) =>
-										setUserData((prev) => ({
-											...prev,
-											userName: evt.target.value,
-										}))
-									}
-								/>
-
-								<input
-									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-									type='number'
-									placeholder='97 777 77 77'
-									required
-									maxLength={13}
-									onChange={(evt) =>
-										setUserData((prev) => ({
-											...prev,
-											phone: evt.target.value,
-										}))
-									}
-								/>
-
-								<button
-									className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
-									type='submit'
-									disabled={isSending}
-								>
-									{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
-								</button>
-							</form>
-						</div>
-					</Fade>
+								{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
+							</button>
+						</form>
+					</div>
 				</div>
 			</section>
 
 			{/* Modals */}
 
-				<Modal
-					width={'sm:w-[500px] w-[90%]'}
-					title={'Malumotlaringizni kiriting va biz sz bilan bog\'lanamiz'}
-					modal={requestModal}
-					setModal={setRequestModal}
-				>
-					<div className=' md:p-1  w-full'>
-						<form
-							className='flex flex-col  items-center gap-3 justify-center'
-							onSubmit={handleSubmit}
+			<Modal
+				width={'sm:w-[500px] w-[90%]'}
+				title={"Malumotlaringizni kiriting va biz sz bilan bog'lanamiz"}
+				modal={requestModal}
+				setModal={setRequestModal}
+			>
+				<div className=' md:p-1  w-full'>
+					<form
+						className='flex flex-col  items-center gap-3 justify-center'
+						onSubmit={handleSubmit}
+					>
+						<input
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+							placeholder='Ismingiz'
+							type='text'
+							onChange={(evt) =>
+								setUserData((prev) => ({
+									...prev,
+									userName: evt.target.value,
+								}))
+							}
+						/>
+
+						<input
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
+							placeholder='97 777 77 77'
+							type='number'
+							onChange={(evt) =>
+								setUserData((prev) => ({
+									...prev,
+									phone: evt.target.value,
+								}))
+							}
+						/>
+
+						<button
+							className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
+							type='submit'
+							disabled={isSending}
 						>
-							
-								<input
-									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-									
-									placeholder='Ismingiz'
-									type='text'
-									onChange={(evt) =>
-										setUserData((prev) => ({
-											...prev,
-											userName: evt.target.value,
-										}))
-									}
-								/>
-
-<input
-									className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500'
-									
-									placeholder='97 777 77 77'
-									type='number'
-									onChange={(evt) =>
-										setUserData((prev) => ({
-											...prev,
-											phone: evt.target.value,
-										}))
-									}
-								/>
-
-<button
-									className='shadow bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
-									type='submit'
-									disabled={isSending}
-								>
-									{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
-								</button>
-						</form>
-					</div>
-				</Modal>
+							{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
+						</button>
+					</form>
+				</div>
+			</Modal>
 
 			<Toaster position='top-center' />
 		</main>
