@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ModeToggle } from '@/components/mode-toggle';
 
 import React, { useEffect, useRef, useState } from 'react';
 import './header.css';
