@@ -156,14 +156,13 @@
 }
 body ,html {
   background-color: #F4F7FD;
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
   
 }
-body>div {overflow-x:hidden;}
+
+body> .main_box {overflow-x:hidden;}
 .dark body{
   background-color: #070F2B;
-  overflow-x: hidden !important;
-  
 
 }
 
