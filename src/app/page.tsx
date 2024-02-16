@@ -1,7 +1,9 @@
 'use client';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './globals.css';
-import { Fade, Zoom, Bounce } from 'react-reveal';
+const Fade = require("react-reveal/Fade")
+const Zoom = require("react-reveal/Zoom")
+// import { Fade, Zoom, Bounce } from 'react-reveal';
 import chooseData from '../data/data.js';
 import { FaCalendarDays } from 'react-icons/fa6';
 import { MdOutlineMail } from 'react-icons/md';
