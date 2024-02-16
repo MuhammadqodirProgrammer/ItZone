@@ -26,12 +26,10 @@
 }
 
 .header_icons_box {
-    /* width: 32px;
-    height: 32px; */
-    padding: 10px  16px;
-    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     border:1px solid #0d7de7;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,6 +64,12 @@
     }
     .navbar_offcanvas {
         display: block !important;
+    }
+    .header_icons_box {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px !important;
+        border:1px solid #0d7de7;
     }
 
 }

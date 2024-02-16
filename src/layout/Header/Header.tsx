@@ -44,7 +44,7 @@ function Header() {
 	};
 	return (
 		<>
-			<header className=' header shadow-lg  bg-[#EDF2F7] dark:bg-[#171923]  sticky w-full z-50 top-0 left-0 '>
+			<header className=' header shadow-lg  bg-[#EDF2F7]  dark:bg-[#18273f] sticky w-full z-50 top-0 left-0 '>
 				<div className='flex    gap-x-5 m-auto  justify-between inner_container items-center'>
 					<Link href='/' className=''>
 						<Image src={Logo} height={50} alt='logo' />
@@ -59,12 +59,7 @@ function Header() {
 								>
 									Kurslar
 								</a>
-								<a
-									href='#news'
-									className='block  lg:inline-block  text-mainColor hover:text-blue-900  font-medium text-[20px] '
-								>
-									Yangiliklar
-								</a>
+							
 								<a
 									href='#about'
 									className='block  lg:inline-block  text-mainColor  hover:text-blue-900  font-medium text-[20px] '
@@ -81,7 +76,7 @@ function Header() {
 
 						<button
 							type='button'
-							className='menu header_icons_box  text-mainColor '
+							className='menu header_icons_box  '
 							onClick={toggleOffcanvas}
 						>
 							<svg
@@ -106,7 +101,7 @@ function Header() {
 
 						 <button
 							type='button'
-							className=' header_icons_box'
+							className=' header_icons_box ml-[15px]'
 							onClick={() => {
 								toggleTheme();
 								setActive(!active);
@@ -153,14 +148,14 @@ function Header() {
 			</header>
 
 			{isOffcanvasOpen && (
-				<nav className='navbar_offcanvas bg-[#EDF2F7]  dark:bg-[#475569]  fixed top-0 left-0  h-screen  '>
-					<div className='h-[10vh] flex items-center px-3 justify-between'>
+				<nav className='navbar_offcanvas bg-[#EDF2F7]   fixed top-0 left-0  h-screen  '>
+					<div className='min-h-[60px] py-[10px] dark:bg-[#18273F] flex items-center px-3 justify-between'>
 						<Image src={Logo} height={50} alt='logo' />
 
 						<button
 							onClick={toggleOffcanvas}
 							type='button'
-							className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900   rounded-lg text-sm w-8 h-8  inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white'
+							className='text-gray-400 bg-gray-500 hover:bg-gray-600 hover:text-gray-900   rounded-lg text-sm w-8 h-8  inline-flex items-center justify-center dark:hover:bg-gray-600 '
 						>
 							<svg
 								className='w-3 h-3'
@@ -179,7 +174,7 @@ function Header() {
 							</svg>
 						</button>
 					</div>
-					<div className=' bg-[#EDF2F7]  dark:bg-[#475569] h-screen  p-[20px]'>
+					<div className=' bg-[#EDF2F7]   dark:bg-[#070F2B] h-screen  p-[20px]'>
 						<div className=' w-[100%]   flex flex-col items-center  gap-[25px] '>
 							<div className='text-sm w-[100%] flex-col  justify-center lg:flex items-center gap-[25px]'>
 								<a
@@ -188,20 +183,15 @@ function Header() {
 								>
 									Kurslar
 								</a>
+							
 								<a
 									href='#responsive-header'
 									className='block mt-4 w-[100%]   text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
-									Yangiliklar
-								</a>
-								<a
-									href='#responsive-header'
-									className='block mt-4 w-[100%]   text-blue-700 hover:text-blue-900  font-medium text-[20px] '
-								>
 									Biz haqimizda
 								</a>
 							</div>
-							<button className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit bg-mainColor text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
+							<button className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit  text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
 									Ro'yhatdan o'tish
 								</button>
 							<button

@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./footer.css";
 const Footer = () => {
   return (
-    <footer className="footer bg-[#EDF2F7] dark:bg-[#171923] static bottom-0 mt-3 w-full z-50">
+    <footer className="footer bg-[#EDF2F7] dark:bg-[#18273F] static bottom-0 mt-3 w-full z-50">
       <div className="flex   justify-between inner_container ">
         <h4 className="text-[black] dark:text-[white]">© 2023 Osmondagi bolalar </h4>
         <div className="chakra-stack flex items-center gap-x-3">
