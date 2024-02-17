@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -10,6 +9,7 @@ import Logo from '../../../public/images/logo.png';
 import { Modal } from '@/components/Modal/Modal';
 import { Toaster, toast } from 'react-hot-toast';
 import sendMessage from '@/lib/sendMessage';
+import Link from '../../../node_modules/next/link';
 
 function Header() {
 	const { setTheme } = useTheme();
@@ -22,10 +22,7 @@ function Header() {
 	const modalCourseRef: any = useRef<HTMLInputElement>();
 	const [requestModal, setRequestModal] = useState<boolean>(false);
 	const [isSending, setIsSending] = useState<boolean>(false);
-	let userName: any;
-	if (typeof window !== 'undefined') {
-		userName = localStorage.getItem('userName');
-	}
+
 	const toggleTheme = () => {
 		const newTheme = theme === 'light' ? 'dark' : 'light';
 		setThemeState(newTheme);
@@ -81,22 +78,25 @@ function Header() {
 					<div className='flex'>
 						<div className='   hidden md:flex lg:items-center gap-x-[25px] '>
 							<div className='text-sm  md:flex items-center gap-x-[25px]'>
-								<a
-									href='#courses'
+								<Link
+									href='/course'
 									className='block  lg:inline-block  text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
 									Kurslar
-								</a>
+								</Link>
 
-								<a
-									href='#about'
+								<Link
+									href='/about'
 									className='block  lg:inline-block  text-mainColor  hover:text-blue-900  font-medium text-[20px] '
 								>
 									Biz haqimizda
-								</a>
+								</Link>
 							</div>
 
-							<button onClick={()=>setRequestModal(true)}  className='inline-block  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit bg-inherit text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
+							<button
+								onClick={() => setRequestModal(true)}
+								className='inline-block  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit bg-inherit text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '
+							>
 								Ro'yhatdan o'tish
 							</button>
 						</div>
@@ -204,21 +204,24 @@ function Header() {
 					<div className=' bg-[#EDF2F7]   dark:bg-[#070F2B] h-screen  p-[20px]'>
 						<div className=' w-[100%]   flex flex-col items-center  gap-[25px] '>
 							<div className='text-sm w-[100%] flex-col  justify-center lg:flex items-center gap-[25px]'>
-								<a
-									href='#responsive-header'
+								<Link
+									href='/course'
 									className='block mt-4 w-[100%]   text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
 									Kurslar
-								</a>
+								</Link>
 
-								<a
-									href='#responsive-header'
+								<Link
+									href='/about'
 									className='block mt-4 w-[100%]   text-mainColor hover:text-blue-900  font-medium text-[20px] '
 								>
 									Biz haqimizda
-								</a>
+								</Link>
 							</div>
-							<button onClick={()=>setRequestModal(true)}  className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit  text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
+							<button
+								onClick={() => setRequestModal(true)}
+								className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit  text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '
+							>
 								Ro'yhatdan o'tish
 							</button>
 						</div>
