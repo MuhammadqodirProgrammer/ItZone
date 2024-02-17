@@ -1,5 +1,12 @@
 'use client';
-import React, { HtmlHTMLAttributes, RefAttributes, useEffect, useReducer, useRef, useState } from 'react';
+import React, {
+	HtmlHTMLAttributes,
+	RefAttributes,
+	useEffect,
+	useReducer,
+	useRef,
+	useState,
+} from 'react';
 import './globals.css';
 import chooseData from '../data/data.js';
 import { FaCalendarDays } from 'react-icons/fa6';
@@ -29,11 +36,11 @@ import { ChooseCarousel } from '@/components/ChooseCarousel/ChooseCarousel';
 import { Modal } from '@/components/Modal/Modal';
 import sendMessage from '@/lib/sendMessage';
 export default function Home() {
-	const nameRef:any= useRef<HTMLInputElement>();
-	const phoneRef:any = useRef<HTMLInputElement>();
-	const modalNameRef:any = useRef<HTMLInputElement>();
-	const modalPhoneRef:any = useRef<HTMLInputElement>();
-	const modalCourseRef:any = useRef<HTMLInputElement>();
+	const nameRef: any = useRef<HTMLInputElement>();
+	const phoneRef: any = useRef<HTMLInputElement>();
+	const modalNameRef: any = useRef<HTMLInputElement>();
+	const modalPhoneRef: any = useRef<HTMLInputElement>();
+	const modalCourseRef: any = useRef<HTMLInputElement>();
 	const [requestModal, setRequestModal] = useState<boolean>(false);
 	const [isSending, setIsSending] = useState<boolean>(false);
 
@@ -42,7 +49,7 @@ export default function Home() {
 		AOS.refresh();
 	}, []);
 
-	const sendDataFunc =(data:UserReq)=>{
+	const sendDataFunc = (data: UserReq) => {
 		const sendResp: sendRespType = sendMessage(data);
 		if (sendResp.success) {
 			toast.success(sendResp.message);
@@ -52,27 +59,27 @@ export default function Home() {
 			toast.error(sendResp.message);
 			setIsSending((prev) => !prev);
 		}
-	}
+	};
 	const handleSubmit = (evt: any) => {
 		evt.preventDefault();
 		setIsSending(true);
 		const data = {
-			userName:nameRef.current?.value ||"kimdir",
-			phone:phoneRef.current?.value ||"nomeri kirgazilmadi",
-		}
-		sendDataFunc(data)
+			userName: nameRef.current?.value || 'kimdir',
+			phone: phoneRef.current?.value || 'nomeri kirgazilmadi',
+		};
+		sendDataFunc(data);
 	};
 	const handleModalSubmit = (evt: any) => {
 		evt.preventDefault();
 		setIsSending(true);
 		const data = {
-			userName:modalNameRef.current?.value ||"kimdir",
-			phone:modalPhoneRef.current?.value ||"nomeri kirgazilmadi",
-			course:modalCourseRef.current?.value
-		}
-		sendDataFunc(data)
+			userName: modalNameRef.current?.value || 'kimdir',
+			phone: modalPhoneRef.current?.value || 'nomeri kirgazilmadi',
+			course: modalCourseRef.current?.value,
+		};
+		sendDataFunc(data);
 	};
-	
+
 	return (
 		<main className='  '>
 			<section className='hero_section'>
@@ -278,7 +285,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section  className='contact  '>
+			<section className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
 					<div
 						data-aos='fade-right'
@@ -309,7 +316,6 @@ export default function Home() {
 								required
 								maxLength={50}
 								ref={nameRef}
-								
 							/>
 
 							<input
@@ -350,7 +356,7 @@ export default function Home() {
 							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:text-white dark:focus:border-orange-700'
 							placeholder='Ismingiz'
 							type='text'
-						ref={modalNameRef}
+							ref={modalNameRef}
 						/>
 
 						<input
@@ -358,15 +364,17 @@ export default function Home() {
 							placeholder='97 777 77 77'
 							type='number'
 							ref={modalPhoneRef}
-
 						/>
-<select ref={modalCourseRef} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700' >
-	<option  value="Rus tili">Rus tili</option>
-	<option  value="Turk tili">Turk tili</option>
-	<option  value="Ingliz tili">Ingliz tili</option>
-	<option  value="Frontend">Frontend</option>
-	<option  value="Backend">Backend</option>
-</select>
+						<select
+							ref={modalCourseRef}
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700'
+						>
+							<option value='Rus tili'>Rus tili</option>
+							<option value='Turk tili'>Turk tili</option>
+							<option value='Ingliz tili'>Ingliz tili</option>
+							<option value='Frontend'>Frontend</option>
+							<option value='Backend'>Backend</option>
+						</select>
 						<button
 							className='shadow  dark:bg-orange-700 dark:hover:bg-orange-600 bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
 							type='submit'

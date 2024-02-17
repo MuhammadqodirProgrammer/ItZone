@@ -96,7 +96,7 @@ function Header() {
 								</a>
 							</div>
 
-							<button className='inline-block  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit bg-inherit text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
+							<button onClick={()=>setRequestModal(true)}  className='inline-block  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit bg-inherit text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
 								Ro'yhatdan o'tish
 							</button>
 						</div>
@@ -218,7 +218,7 @@ function Header() {
 									Biz haqimizda
 								</a>
 							</div>
-							<button className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit  text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
+							<button onClick={()=>setRequestModal(true)}  className='inline-block w-[100%]  px-4 py-3 leading-none border rounded-full text-[20px]  font-medium bg-inherit  text-mainColor duration-500 transition-[2s] border-mainColor  hover:text-white hover:bg-blue-900 '>
 								Ro'yhatdan o'tish
 							</button>
 						</div>
