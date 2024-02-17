@@ -7,6 +7,9 @@ import './header.css';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Logo from '../../../public/images/logo.png';
+import { Modal } from '@/components/Modal/Modal';
+import { Toaster, toast } from 'react-hot-toast';
+import sendMessage from '@/lib/sendMessage';
 
 function Header() {
 	const { setTheme } = useTheme();
@@ -14,7 +17,11 @@ function Header() {
 	const [isOffcanvasOpen, setOffcanvasOpen] = useState(false);
 	const [active, setActive] = useState(true);
 	const [theme, setThemeState] = useState('light');
-	const logoutRef: any = useRef<any>();
+	const modalNameRef: any = useRef<HTMLInputElement>();
+	const modalPhoneRef: any = useRef<HTMLInputElement>();
+	const modalCourseRef: any = useRef<HTMLInputElement>();
+	const [requestModal, setRequestModal] = useState<boolean>(false);
+	const [isSending, setIsSending] = useState<boolean>(false);
 	let userName: any;
 	if (typeof window !== 'undefined') {
 		userName = localStorage.getItem('userName');
@@ -27,7 +34,28 @@ function Header() {
 			localStorage.setItem('theme', newTheme);
 		}
 	};
+	const sendDataFunc = (data: UserReq) => {
+		const sendResp: sendRespType = sendMessage(data);
+		if (sendResp.success) {
+			toast.success(sendResp.message);
+			setIsSending((prev) => !prev);
+			setRequestModal(false);
+		} else {
+			toast.error(sendResp.message);
+			setIsSending((prev) => !prev);
+		}
+	};
 
+	const handleModalSubmit = (evt: any) => {
+		evt.preventDefault();
+		setIsSending(true);
+		const data = {
+			userName: modalNameRef.current?.value || 'kimdir',
+			phone: modalPhoneRef.current?.value || 'nomeri kirgazilmadi',
+			course: modalCourseRef.current?.value,
+		};
+		sendDataFunc(data);
+	};
 	useEffect(() => {
 		let storedTheme: any;
 		if (typeof window !== 'undefined') {
@@ -197,6 +225,53 @@ function Header() {
 					</div>
 				</nav>
 			)}
+
+			<Modal
+				width={'sm:w-[500px] w-[90%]'}
+				title={"Malumotlaringizni kiriting va biz sz bilan bog'lanamiz"}
+				modal={requestModal}
+				setModal={setRequestModal}
+			>
+				<div className=' md:p-1  w-full'>
+					<form
+						className='flex flex-col  items-center gap-3 justify-center'
+						onSubmit={handleModalSubmit}
+					>
+						<input
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:text-white dark:focus:border-orange-700'
+							placeholder='Ismingiz'
+							type='text'
+							ref={modalNameRef}
+						/>
+
+						<input
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:text-white dark:focus:border-orange-700'
+							placeholder='97 777 77 77'
+							type='number'
+							ref={modalPhoneRef}
+						/>
+						<select
+							ref={modalCourseRef}
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700'
+						>
+							<option value='Rus tili'>Rus tili</option>
+							<option value='Turk tili'>Turk tili</option>
+							<option value='Ingliz tili'>Ingliz tili</option>
+							<option value='Frontend'>Frontend</option>
+							<option value='Backend'>Backend</option>
+						</select>
+						<button
+							className='shadow  dark:bg-orange-700 dark:hover:bg-orange-600 bg-orange-500 hover:bg-orange-400   w-full focus:shadow-outline focus:outline-none text-white font-bold sm:py-4 cursor-pointer py-3 px-4  rounded'
+							type='submit'
+							disabled={isSending}
+						>
+							{isSending ? 'Yuborilmoqda...' : "So'rov Yuborish"}
+						</button>
+					</form>
+				</div>
+			</Modal>
+
+			<Toaster position='top-center' />
 		</>
 	);
 }

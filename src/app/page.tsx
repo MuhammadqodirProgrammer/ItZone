@@ -303,7 +303,7 @@ export default function Home() {
 							className='w-full  flex flex-col gap-5 mt-5 faq_form '
 						>
 							<input
-								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500 dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:focus:border-orange-700'
+								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500 dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700'
 								type='text'
 								placeholder='Ismingiz'
 								required
@@ -313,7 +313,7 @@ export default function Home() {
 							/>
 
 							<input
-								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:focus:border-orange-700'
+								className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700'
 								type='number'
 								placeholder='97 777 77 77'
 								required
@@ -347,20 +347,20 @@ export default function Home() {
 						onSubmit={handleModalSubmit}
 					>
 						<input
-							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:focus:border-orange-700'
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:text-white dark:focus:border-orange-700'
 							placeholder='Ismingiz'
 							type='text'
 						ref={modalNameRef}
 						/>
 
 						<input
-							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:focus:border-orange-700'
+							className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:text-white dark:focus:border-orange-700'
 							placeholder='97 777 77 77'
 							type='number'
 							ref={modalPhoneRef}
 
 						/>
-<select ref={modalCourseRef} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:border-orange-500 dark:focus:border-orange-700' >
+<select ref={modalCourseRef} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full sm:py-4  py-3 px-4 placeholder-gray-600 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500  dark:bg-slate-600 dark:placeholder-gray-100 dark:text-white dark:border-orange-500 dark:focus:border-orange-700' >
 	<option  value="Rus tili">Rus tili</option>
 	<option  value="Turk tili">Turk tili</option>
 	<option  value="Ingliz tili">Ingliz tili</option>
