@@ -9,7 +9,7 @@ let tg = {
         data.userName +
         '\n\nTelefon nomeri:' +
         data.phone +
-        '\n\nVaqti:' + data?.course ? ("\n\nqaysi kursda o'qimoqchi" + data.course):""
+        '\n\nVaqti:' + data?.course ? "\n\nqaysi kursda o'qimoqchi" + data.course:""
         currentDate.toISOString();
     const encodedMessage = encodeURIComponent(message); // Xabarni kodlangan URL-ga joylashtiramiz
     const url = `https://api.telegram.org/bot${tg.token}/sendMessage?chat_id=${tg.chat_id}&text=${encodedMessage}`;
