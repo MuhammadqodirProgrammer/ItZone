@@ -27,7 +27,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ChooseCarousel } from '@/components/ChooseCarousel/ChooseCarousel';
 import { Modal } from '@/components/Modal/Modal';
-import { useSelector, useDispatch } from 'react-redux';
 import sendMessage from '@/lib/sendMessage';
 export default function Home() {
 	const nameRef = useRef<HTMLInputElement>();
