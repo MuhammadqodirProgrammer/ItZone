@@ -27,6 +27,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ChooseCarousel } from '@/components/ChooseCarousel/ChooseCarousel';
 import { Modal } from '@/components/Modal/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import sendMessage from '@/lib/sendMessage';
 export default function Home() {
 	const nameRef = useRef<HTMLInputElement>();
 	const phoneRef = useRef<HTMLInputElement>();
@@ -36,54 +38,31 @@ export default function Home() {
 		userName: '',
 		phone: '',
 	});
+
 	useEffect(() => {
 		AOS.init();
 		AOS.refresh();
 	}, []);
 	useEffect(() => {
-		console.log(isSending, 'isSending');
-	}, [isSending]);
-
-	let tg = {
-		token: '6844843142:AAGhgKTY9zURnTZYF3-XBUZpxjXyRwgTiJI',
-		chat_id: '-1002016759420',
-	};
-	function sendMessage(): void {
-		const currentDate = new Date();
-		const message =
-			'Ismi:' +
-			userData.userName +
-			'\n\nTelefon nomeri:' +
-			userData.phone +
-			'\n\nVaqti:' +
-			currentDate.toISOString();
-		const encodedMessage = encodeURIComponent(message); // Xabarni kodlangan URL-ga joylashtiramiz
-		const url = `https://api.telegram.org/bot${tg.token}/sendMessage?chat_id=${tg.chat_id}&text=${encodedMessage}`;
-
-		const xht = new XMLHttpRequest();
-
-		xht.onreadystatechange = function () {
-			if (xht.readyState == XMLHttpRequest.DONE) {
-				if (JSON.parse(xht.responseText).ok) {
-					toast.success(
-						"So'rovingiz qabul qilindi, siz bilan tez orada bog'lanamiz"
-					);
-					setIsSending((prev) => !prev);
-					setRequestModal(false);
-				}
-			}
-		};
-		xht.open('GET', url);
-		xht.send();
-		// nameRef.current.value = '';
-	}
+		
+	}, [isSending, userData]);
 
 	const handleSubmit = (evt: any) => {
 		evt.preventDefault();
-		setIsSending((prev) => !prev);
-		sendMessage();
+		setIsSending(true);
+		const sendResp: sendRespType = sendMessage(userData);
+
+		if (sendResp.success) {
+			toast.success(sendResp.message);
+			setIsSending((prev) => !prev);
+			setRequestModal(false);
+		} else {
+			toast.error(sendResp.message);
+			setIsSending((prev) => !prev);
+		}
 	};
 
+	
 	return (
 		<main className='  '>
 			<section className='hero_section'>
@@ -175,9 +154,8 @@ export default function Home() {
 					{chooseData.map((item) => (
 						<div
 							key={item.id}
-							data-aos="flip-left"
-        
-                          data-aos-delay="100"
+							data-aos='flip-left'
+							data-aos-delay='100'
 							className=' w-[100%]  sm:w-[47%] md:w-[29%]  lg:w-[31%]   lg:py-8 lg:px-8 sm:py-5 sm:px-5  shadow-[-1px_-1px_10px_4px_rgba(0,0,0,0.1),_1px_1px_8px_6px_rgba(45,78,255,0.15)] transition duration-300  hello cursor-pointer rounded-xl  text-center'
 						>
 							<div className='  bg-mainColor   text-white w-[70px]  h-[70px] flex  items-center justify-center rounded-[20px] text-[28px] mx-auto '>
@@ -205,7 +183,11 @@ export default function Home() {
 					</div>
 
 					<div data-aos='fade-left' className='md:w-[49%] w-[100%] text-left'>
-						<h4 data-aos='fade-left' data-aos-delay="200" className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+						<h4
+							data-aos='fade-left'
+							data-aos-delay='200'
+							className='sm:text-[25px] text-[16px]   font-medium   my-4   '
+						>
 							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
 								IT Zone -
 							</span>
@@ -213,7 +195,11 @@ export default function Home() {
 							tili va rus tilini o'qitish orqali mijozlarimizga yuqori sifatli
 							ta'lim berishga bag'ishlangan.
 						</h4>
-						<h4  data-aos='fade-left' data-aos-delay="400" className='sm:text-[25px] text-[16px]   font-medium   my-4   '>
+						<h4
+							data-aos='fade-left'
+							data-aos-delay='400'
+							className='sm:text-[25px] text-[16px]   font-medium   my-4   '
+						>
 							<span className='  text-[22px] sm:text-[30px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-blue-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
 								Bizning maqsadimiz -
 							</span>
@@ -231,31 +217,52 @@ export default function Home() {
 				</h5>
 
 				<div className=' flex  justify-between flex-wrap gap-y-5 '>
-					<div data-aos="zoom-in" data-aos-delay="50" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+					<div
+						data-aos='zoom-in'
+						data-aos-delay='50'
+						className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'
+					>
 						<h5 className='font-bold text-[25px] '>Dasturlash</h5>
 
 						<Image src={devImg} className=' mx-auto ' alt='course img' />
 
 						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white dark:bg-slate-600 absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon  dark:text-white ' />
+							<MdArrowOutward
+								size={30}
+								className=' course_icon  dark:text-white '
+							/>
 						</div>
 					</div>
-					<div data-aos="zoom-in" data-aos-delay="150" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+					<div
+						data-aos='zoom-in'
+						data-aos-delay='150'
+						className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'
+					>
 						<h5 className='font-bold text-[25px] '>Marketing </h5>
 
 						<Image src={markitingImg} className=' mx-auto ' alt='course img' />
 
 						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white dark:bg-slate-600 absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon  dark:text-white ' />
+							<MdArrowOutward
+								size={30}
+								className=' course_icon  dark:text-white '
+							/>
 						</div>
 					</div>
-					<div data-aos="zoom-in" data-aos-delay="250" className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'>
+					<div
+						data-aos='zoom-in'
+						data-aos-delay='250'
+						className='p-5 course_card hover:shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] dark:bg-[#18273f]  bg-[#d9dde3] w-[100%]   sm:w-[48%] md:w-[31%] pb-8 relative rounded-[20px]'
+					>
 						<h5 className='font-bold text-[25px] '>Dizayn</h5>
 
 						<Image src={designImg} className=' mx-auto ' alt='course img' />
 
 						<div className='circle w-[50px] flex items-center justify-center h-[50px] bg-white dark:bg-slate-600 absolute bottom-4 right-6 rounded-full  '>
-							<MdArrowOutward size={30} className=' course_icon  dark:text-white ' />
+							<MdArrowOutward
+								size={30}
+								className=' course_icon  dark:text-white '
+							/>
 						</div>
 					</div>
 				</div>
@@ -263,11 +270,17 @@ export default function Home() {
 
 			<section id='#news' className='contact  '>
 				<div className=' flex flex-wrap items-center justify-between  my-10 w-[100%] '>
-					<div data-aos='fade-right' className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '>
+					<div
+						data-aos='fade-right'
+						className='md:w-[50%] w-[100%] text-left    rounded-2xl px-5  py-7 '
+					>
 						<Lottie animationData={callAnimationData} />
 					</div>
 
-					<div data-aos='fade-left' className='md:w-[47%] w-[100%] text-left  bg-gray-400 dark:bg-[#18273f] rounded-2xl px-5  py-7 '>
+					<div
+						data-aos='fade-left'
+						className='md:w-[47%] w-[100%] text-left  bg-gray-400 dark:bg-[#18273f] rounded-2xl px-5  py-7 '
+					>
 						<h4 className='  sm:text-[34px] text-[26px] font-black  lg:tracking-wider tracking-wide     bg-gradient-to-r  from-blue-600 via-orange-700 to-indigo-400 inline-block text-transparent bg-clip-text  mx-auto '>
 							Bepul konsultatsiya
 						</h4>
